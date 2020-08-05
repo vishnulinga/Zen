@@ -1,0 +1,16 @@
+Differences between GET and POST
+GET:-
+GET requests can be cached
+GET requests remain in the browser history
+GET requests can be bookmarked
+GET requests should never be used when dealing with sensitive data
+GET requests have length restrictions
+GET requests are only used to request data (not modify)
+GET request is not secured because data is exposed in URL bar.
+
+POST:-
+POST requests are never cached
+POST requests do not remain in the browser history
+POST requests cannot be bookmarked
+POST requests have no restrictions on data length
+POST request is secured because data is not exposed in URL bar.
