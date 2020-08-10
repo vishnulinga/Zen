@@ -1,0 +1,74 @@
+<!DOCTYPE html><head>
+<style>
+body{
+    background-color: black;
+}
+.textbox{
+    background-color: black;
+    color: cornsilk;
+    width: 25%;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 50px;
+    font-size: 50px;
+    text-align: center;
+    
+}
+.butt{
+    background-color: black;
+    color: cornsilk;
+    border: darkgreen 1px solid;
+    margin-left: 47%;
+    margin-right: 45%;
+    margin-top: 50px;
+    width:10%;
+    padding-top:5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+
+
+    <script>
+var inp=document.createElement("input")
+inp.setAttribute("type","text")
+inp.setAttribute("class","textbox")
+inp.setAttribute("id","display")
+document.body.append(inp)
+
+var inp1=document.createElement("input")
+inp1.setAttribute("type","button")
+inp1.setAttribute("class","butt")
+inp1.setAttribute("value","Generate Number")
+inp1.setAttribute("onClick","generate()")
+document.body.append(inp1)
+
+var temp=document.getElementById("display").value
+
+function generate()
+{
+if(temp=="")
+   { var val="123456789".split("").sort((a,b)=>0.5-Math.random())
+    val.splice(Math.floor((Math.random()*9)+1),0,'0')
+    val=+val.join("")
+    val=Math.floor(val/100)
+    
+   
+    temp=val
+    return generate()
+    }
+    else
+   { document.getElementById("display").value=temp
+    temp=""}
+    
+
+    
+
+}
+
+    </script>
+
+</body>
