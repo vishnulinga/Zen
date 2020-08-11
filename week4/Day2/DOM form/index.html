@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<head>
+<style>
+    body{
+        background-color: black;
+    }
+    .div1{
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgb(44, 43, 43);
+        color: cornsilk;
+        width:30%;
+    }
+    .text{
+        border: burlywood;
+        
+        color: black;
+        font-size: medium;
+        margin-top: 20px;
+        margin-left: 15px;
+        
+       
+    }
+    
+    
+    label{
+        color: cornsilk;
+        margin-left: 20%;
+        margin-top: 20px;;
+    }
+    .Female{
+        margin-left: 20px;
+       
+
+    }
+    .radio{
+        border: burlywood;
+        margin-left: 5px;
+        color: cornsilk;
+        margin-top: 20px;
+    }
+    .div2{
+        margin-left: 20%;
+        color: cornsilk;
+        margin-top: 20px;
+    }
+    .checkbox{
+        margin-left: 20%;
+        margin-top: 10px;
+    }
+    .cblabel{
+        margin-left: 10px;
+        color:cornsilk;
+    }
+    .submit{
+        margin-left: 45.90%;margin-top: 20px;
+        color:black;
+        background-color: darkgray;
+        cursor: pointer;
+
+    }
+    .div3{
+        width:80%;
+        margin-top: 40px;
+        color: burlywood;
+        margin-left: auto;
+        margin-right: auto;
+        
+
+    }
+    .tab{
+        
+        border: 1px solid red;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    tr,th{
+        text-align: center;
+        color: rgb(151, 147, 147);
+        border: 1px solid red;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+</style>
+</head>
+<body>
+
+    <script>
+        var div1=document.createElement("div")
+        div1.setAttribute('class','div1')
+        var form=document.createElement("form")
+        form.setAttribute("action","")
+        form.setAttribute("method",'GET')
+        form.setAttribute("onsubmit","myfun();return false;")
+        var label=document.createElement("label")
+        label.setAttribute("for","Firstname")
+        var txt=document.createTextNode('First Name:')
+        label.appendChild(txt)
+        form.appendChild(label)
+        var inp1=document.createElement("input")
+        inp1.setAttribute("type","text")
+        inp1.setAttribute("class","text")
+        inp1.setAttribute("id","Firstname")
+        form.appendChild(inp1)
+        var br=document.createElement("br")
+        form.appendChild(br)
+
+        var label=document.createElement("label")
+        label.setAttribute("for","Lastname")
+        var txt=document.createTextNode('Last Name:')
+        label.appendChild(txt)
+        form.appendChild(label)
+        var inp2=document.createElement("input")
+        inp2.setAttribute("type","text")
+        inp2.setAttribute("class","text")
+        inp2.setAttribute("id","Lastname")
+        form.appendChild(inp2)
+        var br=document.createElement("br")
+        form.appendChild(br)
+
+        var label=document.createElement("label")
+        label.setAttribute("for","Address")
+        var txt=document.createTextNode('Address:')
+        label.appendChild(txt)
+        form.appendChild(label)
+        var inp3=document.createElement("input")
+        inp3.setAttribute("type","text")
+        inp3.setAttribute("class","text")
+        inp3.setAttribute("id","Address")
+        form.appendChild(inp3)
+        var br=document.createElement("br")
+        form.appendChild(br)
+
+        var label=document.createElement("label")
+        label.setAttribute("for","Pincode")
+        var txt=document.createTextNode('Pincode:')
+        label.appendChild(txt)
+        form.appendChild(label)
+        var inp3=document.createElement("input")
+        inp3.setAttribute("type","text")
+        inp3.setAttribute("class","text")
+        inp3.setAttribute("id","Pincode")
+        form.appendChild(inp3)
+        var br=document.createElement("br")
+        form.appendChild(br)
+
+        var label=document.createElement("label")
+        label.setAttribute("for","Male")
+        var txt=document.createTextNode('Male')
+        label.appendChild(txt)
+        form.appendChild(label)
+        var inp3=document.createElement("input")
+        inp3.setAttribute("type","radio")
+        inp3.setAttribute("class","radio")
+        inp3.setAttribute("id","Male")
+        inp3.setAttribute("name","gender")
+        inp3.setAttribute("value","Male")
+        form.appendChild(inp3)
+        var label=document.createElement("label")
+        label.setAttribute("for","Female")
+        label.setAttribute("class","Female")
+        var txt=document.createTextNode('Female')
+        label.appendChild(txt)
+        form.appendChild(label)
+        var inp3=document.createElement("input")
+        inp3.setAttribute("type","radio")
+        inp3.setAttribute("class","radio")
+        inp3.setAttribute("id","Female")
+        inp3.setAttribute("name","gender")
+        inp3.setAttribute("value","Female")
+        form.appendChild(inp3)
+        var label=document.createElement("label")
+        label.setAttribute("for","Other")
+        label.setAttribute("class","Female")
+        var txt=document.createTextNode('Other')
+        label.appendChild(txt)
+        form.appendChild(label)
+        var inp3=document.createElement("input")
+        inp3.setAttribute("type","radio")
+        inp3.setAttribute("class","radio")
+        inp3.setAttribute("id","Other")
+        inp3.setAttribute("name","gender")
+        inp3.setAttribute("value","Other")
+        form.appendChild(inp3)
+        var br=document.createElement("br")
+        form.appendChild(br)
+
+        var div2=document.createElement("div")
+        div2.setAttribute("class","div2")
+        var txt=document.createTextNode('Choice of food: (choose atleast 2)')
+        div2.appendChild(txt)
+        form.appendChild(div2)
+        
+
+        
+        var inp3=document.createElement("input")
+        inp3.setAttribute("type","checkbox")
+        inp3.setAttribute("class","checkbox")
+        inp3.setAttribute("id","Vegetarian")
+        inp3.setAttribute("name","Vegetarian")
+        inp3.setAttribute("value","Vegetarian")
+        form.appendChild(inp3)
+        var label=document.createElement("label")
+        label.setAttribute("for","Vegetarian")
+        label.setAttribute("class","cblabel")
+        var txt=document.createTextNode('Vegetarian')
+        label.appendChild(txt)
+        form.appendChild(label)
+        var br=document.createElement("br")
+        form.appendChild(br)
+        var inp3=document.createElement("input")
+        inp3.setAttribute("type","checkbox")
+        inp3.setAttribute("class","checkbox")
+        inp3.setAttribute("id","Nonveg")
+        inp3.setAttribute("name","Nonveg")
+        inp3.setAttribute("value","Non Vegetarian")
+        form.appendChild(inp3)
+        var label=document.createElement("label")
+        label.setAttribute("for","Nonveg")
+        label.setAttribute("class","cblabel")
+        var txt=document.createTextNode('Non Vegetarian')
+        label.appendChild(txt)
+        form.appendChild(label)
+        var br=document.createElement("br")
+        form.appendChild(br)
+        var inp3=document.createElement("input")
+        inp3.setAttribute("type","checkbox")
+        inp3.setAttribute("class","checkbox")
+        inp3.setAttribute("id","Vegan")
+        inp3.setAttribute("name","Vegan")
+        inp3.setAttribute("value","Vegan")
+        form.appendChild(inp3)
+        var label=document.createElement("label")
+        label.setAttribute("for","Vegan")
+        label.setAttribute("class","cblabel")
+        var txt=document.createTextNode('Vegan')
+        label.appendChild(txt)
+        form.appendChild(label)
+        var br=document.createElement("br")
+        form.appendChild(br)
+        var inp3=document.createElement("input")
+        inp3.setAttribute("type","checkbox")
+        inp3.setAttribute("class","checkbox")
+        inp3.setAttribute("id","Fruits")
+        inp3.setAttribute("name","Fruits")
+        inp3.setAttribute("value","Fruits")
+        form.appendChild(inp3)
+        var label=document.createElement("label")
+        label.setAttribute("for","Fruits")
+        label.setAttribute("class","cblabel")
+        var txt=document.createTextNode('Fruits')
+        label.appendChild(txt)
+        form.appendChild(label)
+        var br=document.createElement("br")
+        form.appendChild(br)
+        var inp3=document.createElement("input")
+        inp3.setAttribute("type","checkbox")
+        inp3.setAttribute("class","checkbox")
+        inp3.setAttribute("id","Keto")
+        inp3.setAttribute("name","Keto")
+        inp3.setAttribute("value","Keto")
+        form.appendChild(inp3)
+        var label=document.createElement("label")
+        label.setAttribute("for","Keto")
+        label.setAttribute("class","cblabel")
+        var txt=document.createTextNode('Keto')
+        label.appendChild(txt)
+        form.appendChild(label)
+        var br=document.createElement("br")
+        form.appendChild(br)
+
+        var label=document.createElement("label")
+        label.setAttribute("for","State")
+        var txt=document.createTextNode('State:')
+        label.appendChild(txt)
+        form.appendChild(label)
+        var inp3=document.createElement("input")
+        inp3.setAttribute("type","text")
+        inp3.setAttribute("class","text")
+        inp3.setAttribute("id","State")
+        form.appendChild(inp3)
+        var br=document.createElement("br")
+        form.appendChild(br)
+
+        var label=document.createElement("label")
+        label.setAttribute("for","Country")
+        var txt=document.createTextNode('Country:')
+        label.appendChild(txt)
+        form.appendChild(label)
+        var inp3=document.createElement("input")
+        inp3.setAttribute("type","text")
+        inp3.setAttribute("class","text")
+        inp3.setAttribute("id","Country")
+        form.appendChild(inp3)
+        var br=document.createElement("br")
+        form.appendChild(br)
+
+        var submit=document.createElement("input")
+        submit.setAttribute("type","submit")
+        submit.setAttribute("class","submit")
+        submit.setAttribute("value","Submit")
+        form.appendChild(submit)
+
+
+        div1.appendChild(form)
+        document.body.append(div1)
+        
+
+
+        function myfun(){
+
+            var FN=document.getElementById("Firstname").value
+            var LN=document.getElementById("Lastname").value
+            var address=document.getElementById("Address").value
+            var pin=document.getElementById("Pincode").value
+            var country=document.getElementById("Country").value
+            var state=document.getElementById("State").value
+            if(document.getElementById("Male").checked)var gender='Male'
+            if(document.getElementById("Female").checked)var gender='Female'
+            if(document.getElementById("Other").checked)var gender='Other'
+            let arr=[]
+            if(document.getElementById("Vegetarian").checked)arr.push("Vegetarian")
+            if(document.getElementById("Nonveg").checked)arr.push("Non-vegetarian")
+            if(document.getElementById("Vegan").checked)arr.push("Vegan")
+            if(document.getElementById("Fruits").checked)arr.push("Fruits")
+            if(document.getElementById("Keto").checked)arr.push("Keto")
+            console.log(arr)
+
+            var tr2=document.createElement("tr")
+        table.appendChild(tr2)
+        var tr2th1=document.createElement('th')
+        var txt=document.createTextNode(FN)
+        tr2th1.appendChild(txt)
+        tr2.appendChild(tr2th1)
+        var tr2th2=document.createElement('th')
+        var txt=document.createTextNode(LN)
+        tr2th2.appendChild(txt)
+        tr2.appendChild(tr2th2)
+        var tr2th3=document.createElement('th')
+        var txt=document.createTextNode(address)
+        tr2th3.appendChild(txt)
+        tr2.appendChild(tr2th3)
+        var tr2th4=document.createElement('th')
+        var txt=document.createTextNode(pin)
+        tr2th4.appendChild(txt)
+        tr2.appendChild(tr2th4)
+        var tr2th5=document.createElement('th')
+        var txt=document.createTextNode(gender)
+        tr2th5.appendChild(txt)
+        tr2.appendChild(tr2th5)
+        var tr2th6=document.createElement('th')
+        var txt=document.createTextNode(arr.join(","))
+        tr2th6.appendChild(txt)
+        tr2.appendChild(tr2th6)
+        var tr2th7=document.createElement('th')
+        var txt=document.createTextNode(country)
+        tr2th7.appendChild(txt)
+        tr2.appendChild(tr2th7)
+        var tr2th8=document.createElement('th')
+        var txt=document.createTextNode(state)
+        tr2th8.appendChild(txt)
+        tr2.appendChild(tr2th8)
+        
+        table.appendChild(tr2)
+
+
+
+        
+
+            
+        }
+
+        var div3=document.createElement("div")
+        div3.setAttribute("class","div3")
+        var table=document.createElement("table")
+        table.setAttribute("class","tab")
+        var tr1=document.createElement("tr")
+        table.appendChild(tr1)
+        var tr1th1=document.createElement('th')
+        var txt=document.createTextNode('First Name')
+        tr1th1.appendChild(txt)
+        tr1.appendChild(tr1th1)
+        var tr1th2=document.createElement('th')
+        var txt=document.createTextNode('Last Name')
+        tr1th2.appendChild(txt)
+        tr1.appendChild(tr1th2)
+        var tr1th3=document.createElement('th')
+        var txt=document.createTextNode('Address')
+        tr1th3.appendChild(txt)
+        tr1.appendChild(tr1th3)
+        var tr1th4=document.createElement('th')
+        var txt=document.createTextNode('Pincode')
+        tr1th4.appendChild(txt)
+        tr1.appendChild(tr1th4)
+        var tr1th5=document.createElement('th')
+        var txt=document.createTextNode('Gender')
+        tr1th5.appendChild(txt)
+        tr1.appendChild(tr1th5)
+        var tr1th6=document.createElement('th')
+        var txt=document.createTextNode('Food Choices')
+        tr1th6.appendChild(txt)
+        tr1.appendChild(tr1th6)
+        var tr1th7=document.createElement('th')
+        var txt=document.createTextNode('Country')
+        tr1th7.appendChild(txt)
+        tr1.appendChild(tr1th7)
+        var tr1th8=document.createElement('th')
+        var txt=document.createTextNode('State')
+        tr1th8.appendChild(txt)
+        tr1.appendChild(tr1th8)
+        
+        table.appendChild(tr1)
+        div3.appendChild(table)
+        document.body.append(div3)
+
+
+
+       
+            
+
+
+
+
+
+    </script>
+</body>
