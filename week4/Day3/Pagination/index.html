@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script type="text/javascript" src="pagenation.js"></script>
+    <style>
+.container1{
+    width:70%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: skyblue;
+    margin-top: 50px;
+    padding-left: 20px;
+}
+.order{
+    margin-left: 205px;
+    margin-right: auto;
+}
+.pagelink{
+    background-color: rgb(207, 204, 204);
+    width:10px;
+    padding-top: 2px;
+    padding-bottom: 8px;
+    color: black;
+    border: solid 1px black;
+}
+    </style>
+    
+
+
+</head>
+<body>
+    <script>
+       
+       var div1=document.createElement("div")
+       div1.setAttribute("class","container1")
+       div1.setAttribute("id","div1")
+       document.body.append(div1)
+
+
+       var nav=document.createElement("nav")
+       nav.setAttribute("aria-label","Page navigation example")
+       nav.setAttribute("class","order")
+       document.body.append(nav)
+       var ul=document.createElement("ul")
+       ul.setAttribute("class","pagination")
+       nav.appendChild(ul)
+
+       
+       buildbutton(1)
+       buildbutton(2)
+       buildbutton(3)
+       buildbutton(4)
+       buildbutton(5)
+       var li=document.createElement("li")
+       li.setAttribute("class","page-item")
+       ul.appendChild(li)
+       var a=document.createElement("a")
+       a.setAttribute("class","pagelink")
+       a.value=myfun(6)
+       a.setAttribute("href","index2.html")
+       var txt=document.createTextNode("Next")
+       a.appendChild(txt)
+       li.appendChild(a)
+
+       
+
+
+function myfun(n){
+   var str="" 
+for(let i=(10*n)-10;i<10*n;i++)
+{
+    var obj=pagenation[i]
+    str=str+obj.id+": "+obj.name+"  ("+obj.email+")"+"\n\n"
+    var br=document.createElement("br")
+    div1.appendChild(br)
+    var br=document.createElement("br")
+    div1.appendChild(br)
+}
+document.getElementById("div1").innerText=str
+}
+
+function buildbutton(n){
+
+       var li=document.createElement("li")
+       li.setAttribute("class","page-item")
+       ul.appendChild(li)
+       var a=document.createElement("input")
+       a.setAttribute("type","button")
+       a.setAttribute("value",n)
+       a.setAttribute("onclick",`myfun(${n})`)
+       li.appendChild(a)}
+function next(){
+
+}
+
+       
+console.log(nav)
+    </script>
+</body>
