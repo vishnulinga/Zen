@@ -1,0 +1,28 @@
+.sectioncard{
+    background-color: white;
+    border-top: 1px solid black;
+    border-bottom:1px solid black;
+    padding-top:6px;
+    padding-bottom: 6px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.cardstyle{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    box-shadow: 2px 2px 5px black;
+    
+}
+.bold{
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+.btn{
+    text-align: center;
+    font-size: 14px;
+    
+
+}
