@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<body>
+
+
+<div style="width:50%;margin-left: auto;margin-right: auto;text-align: center;" id="div">
+    <h1 style="color: green;text-align:center;">SPOTIFY</h1>
+<form method="POST">
+<input type="text" id="url" placeholder="URL">
+<input type="text" id="name" placeholder="name">
+<input type="button" id="submit" value="submit" onclick="upload()" style="margin-top: 10px;">
+
+<div id="display" style="margin-top: 10px;">
+    
+<audio controls preload="auto">
+    <source src="" type="audio/mpeg"  id="audio">
+        
+    
+ 
+  </audio>
+</div>
+
+</form>
+
+</div>
+
+
+<script>
+async function upload()
+{
+var url=document.getElementById("url").value
+var name=document.getElementById("name").value
+var obj={
+'url':`${url}`,
+'name':`${name}`
+}
+console.log(url, typeof(url))
+
+await fetch("https://5f3ecbe913a9640016a691bf.mockapi.io/mp3",{method:'POST',body:JSON.stringify(obj),headers: { 
+        "Content-type": "application/json; charset=UTF-8"
+    }
+    })
+await get();
+}
+
+async function get()
+{
+    var response=await fetch("https://5f3ecbe913a9640016a691bf.mockapi.io/mp3")
+    var data=await response.json()
+
+    let url=data[data.length-1]['url']
+    let name=data[data.length-1]['name']
+    document.getElementById("audio").setAttribute("src",url)
+    
+    console.log("play now")
+
+}
+
+
+
+
+
+</script>
+
+</body>

@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<head>
+ 
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+ 
+<style>
+
+    .outerdiv{
+        margin-left: 10%;
+        margin-right: 10%;
+        height: auto;
+        width:80%;
+        margin-top: 15%;
+    }
+    
+   
+    .questioncol{
+        text-align: left;
+        width:100%;
+    }
+    .question{
+        margin-left: 10px;
+        width:100%;
+    }
+    .scorecol{
+        text-align: right;
+    }
+    .button{
+        width:100%;
+        text-align: left;
+        padding: 0px;
+    }
+    
+</style>
+
+</head>
+<body>
+    
+<script>
+    
+var outerdiv=document.createElement("div")
+outerdiv.setAttribute("class","outerdiv")
+var container=document.createElement("div")
+container.setAttribute("class","container-fluid")
+
+var row=document.createElement("div")
+row.setAttribute("id","row1")
+row.setAttribute("class","row")
+
+var col=document.createElement("div")
+col.setAttribute("id","col1")
+col.setAttribute("class","col-sm-6 questioncol")
+var div=document.createElement("div")
+div.setAttribute("id","question")
+div.setAttribute("class","question")
+col.appendChild(div)
+var progress=document.createElement("div")
+progress.setAttribute("class","progress")
+var in_progress=document.createElement("div")
+in_progress.setAttribute("id","in_progress")
+in_progress.setAttribute("class","progress-bar progress-bar-striped progress-bar-animated")
+in_progress.setAttribute("role","progressbar")
+in_progress.setAttribute("aria-valuemin","0")
+in_progress.setAttribute("aria-valuemax","100")
+progress.appendChild(in_progress)
+col.appendChild(progress)
+row.appendChild(col)
+
+var col=document.createElement("div")
+col.setAttribute("class","col-sm-6 scorecol")
+var div=document.createElement("div")
+div.innerText="Score"
+col.appendChild(div)
+var score=document.createElement("div")
+score.setAttribute("id","score")
+score.setAttribute("class","score")
+col.appendChild(score)
+row.appendChild(col)
+container.appendChild(row)
+
+var row=document.createElement("div")
+row.setAttribute("class","row")
+var col=document.createElement("div")
+col.setAttribute("class","col-sm-12")
+var quest=document.createElement("div")
+quest.setAttribute("id","quest")
+col.appendChild(quest)
+var div=document.createElement("div")
+var opt1=document.createElement("button")
+opt1.setAttribute("type","button")
+opt1.setAttribute("id","opt1")
+opt1.setAttribute("class","btn btn-outline-primary button")
+opt1.setAttribute("onclick","correct()")
+div.appendChild(opt1)
+col.appendChild(div)
+
+var div=document.createElement("div")
+var opt2=document.createElement("button")
+opt2.setAttribute("type","button")
+opt2.setAttribute("id","opt2")
+opt2.setAttribute("class","btn btn-outline-primary button")
+opt2.setAttribute("onclick","wrong()")
+div.appendChild(opt2)
+col.appendChild(div)
+
+var div=document.createElement("div")
+var opt3=document.createElement("button")
+opt3.setAttribute("type","button")
+opt3.setAttribute("id","opt3")
+opt3.setAttribute("class","btn btn-outline-primary button")
+opt3.setAttribute("onclick","wrong()")
+div.appendChild(opt3)
+col.appendChild(div)
+
+var div=document.createElement("div")
+var opt4=document.createElement("button")
+opt4.setAttribute("type","button")
+opt4.setAttribute("id","opt4")
+opt4.setAttribute("class","btn btn-outline-primary button")
+opt4.setAttribute("onclick","wrong()")
+div.appendChild(opt4)
+col.appendChild(div)
+
+
+row.appendChild(col)
+container.appendChild(row)
+
+// console.log(outerdiv)
+
+
+
+outerdiv.appendChild(container)
+document.body.append(outerdiv)
+
+
+var question_no=1
+var total_score=0
+var i=0
+if(i==10)
+window.location.assign("end.html")
+
+async function result(){
+try{
+        var response=await fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple")
+        var questions=await response.json()
+        return questions
+        
+}catch(err){console.log(err)}
+
+}
+
+
+async function main(){
+    var questions=await result()
+    
+
+document.getElementById("question").innerText=` Question ${question_no}/10`
+
+var percentage=question_no*10
+document.getElementById("in_progress").setAttribute("aria-valuenow",`${percentage}%`)
+
+document.getElementById("in_progress").setAttribute("style",`width:${percentage}%;`)
+
+document.getElementById("score").innerText=`${total_score}`
+
+document.getElementById("quest").innerText=await questions['results'][i]['question']
+
+var opt1value=await questions['results'][i]['correct_answer']
+document.getElementById("opt1").innerHTML=`<span style=";background-color:skyblue;color:white;padding-left:5px;padding-right:5px;">A</span><span>&nbsp;&nbsp;</span><span>${opt1value}</span>`
+
+var opt2value=await questions['results'][i]['incorrect_answers'][0]
+document.getElementById("opt2").innerHTML=`<span style="background-color:skyblue;color:white;padding-left:5px;padding-right:5px;">B</span><span>&nbsp;&nbsp;</span><span>${opt2value}</span>`
+
+var opt3value=await questions['results'][i]['incorrect_answers'][1]
+document.getElementById("opt3").innerHTML=`<span style="background-color:skyblue;color:white;padding-left:5px;padding-right:5px;">C</span><span>&nbsp;&nbsp;</span><span>${opt3value}</span>`
+
+var opt4value=await questions['results'][i]['incorrect_answers'][2]
+document.getElementById("opt4").innerHTML=`<span style="background-color:skyblue;color:white;padding-left:5px;padding-right:5px;">D</span><span>&nbsp;&nbsp;</span><span>${opt4value}</span>`
+
+  
+}
+main();
+
+function correct()
+{
+    i++;
+    total_score+=10;
+    question_no++;
+    if(i==10){
+        localStorage.setItem("score",total_score)
+        setTimeout(() => {
+            window.location.assign("end.html")
+    }, 500);
+    alert("Correct\n+10")
+    }
+    else{
+        alert("Correct\n+10")
+main();}
+}
+
+
+function wrong()
+{
+    i++;
+    
+    question_no++;
+    if(i==10){
+        localStorage.setItem("score",total_score)
+        setTimeout(() => {
+            window.location.assign("end.html")
+    }, 500);
+    alert("Wrong\n+0")
+    }
+    else{
+        alert("Wrong\n+0")
+main();}
+}
+
+</script>
+</body>

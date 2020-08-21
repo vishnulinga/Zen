@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<head>
+ 
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<style>
+
+    .outerdiv{
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        margin-top: 15%;
+    }
+    .h1{
+        color:cadetblue;
+        text-align: center;
+    }
+    .button{
+        
+        color:black;
+        margin-left: auto;
+        margin-right: auto;
+        border: none;
+        margin-top: 10px;
+        background-color: white;
+        
+        
+    }
+    .innerdiv{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    .input{
+        width:35%;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow:1px 1px 8px skyblue;
+        
+    }
+</style>
+
+</head>
+<body>
+<script>
+var outerdiv=document.createElement("div")
+outerdiv.setAttribute("class","outerdiv")
+var container=document.createElement("div")
+container.setAttribute("class","container-fluid")
+var h1=document.createElement("h1")
+h1.setAttribute("class","h1")
+h1.innerText=localStorage.getItem("score")
+container.appendChild(h1)
+
+var div=document.createElement("div")
+div.setAttribute("class","innerdiv")
+var txt=document.createElement("input")
+txt.setAttribute("type","text")
+txt.setAttribute("id","username")
+txt.setAttribute("onkeyup","enable()")
+txt.setAttribute("class","form-control input")
+txt.setAttribute("placeholder","Username")
+
+div.appendChild(txt)
+container.appendChild(div)
+
+var div=document.createElement("div")
+div.setAttribute("class","innerdiv")
+var btn=document.createElement("button")
+btn.setAttribute("class","button")
+btn.setAttribute("id","save")
+btn.setAttribute("onclick","save()")
+btn.disabled=true
+btn.innerText="Save"
+div.appendChild(btn)
+container.appendChild(div)
+
+var div=document.createElement("div")
+div.setAttribute("class","innerdiv")
+var btn=document.createElement("a")
+btn.setAttribute("class","button")
+btn.setAttribute("id","playagain")
+btn.setAttribute("href","game.html")
+btn.innerText="Play Again"
+div.appendChild(btn)
+container.appendChild(div)
+
+var div=document.createElement("div")
+div.setAttribute("class","innerdiv")
+var btn=document.createElement("a")
+btn.setAttribute("class","button")
+btn.setAttribute("id","gohome")
+btn.setAttribute("href","index.html")
+btn.innerText="Go Home"
+div.appendChild(btn)
+container.appendChild(div)
+
+
+outerdiv.appendChild(container)
+document.body.append(outerdiv)
+console.log(outerdiv)
+
+
+function enable() {
+    
+     
+    if(document.getElementById("username").value==="") { 
+            document.getElementById('save').disabled = true; 
+        } else { 
+            document.getElementById('save').disabled = false;
+        }
+    }
+
+async function save()
+{
+    let user=document.getElementById("username").value
+    let score=localStorage.getItem("score")
+    localStorage.setItem(`${user}`,`${score}`)
+    console.log(score)
+   await upload(user,score);
+console.log(score)
+   window.location.assign("highscores.html")
+
+console.log(score)
+
+}
+
+async function upload(user,score)
+{
+    
+    var obj={
+    "score": score,
+    "user": user
+    
+}
+console.log(obj)
+
+await fetch("https://5f3ecbe913a9640016a691bf.mockapi.io/username",{method:'POST',body:JSON.stringify(obj),headers: { 
+        "Content-type": "application/json; charset=UTF-8"
+    }})
+
+}
+
+
+</script>
+</body>

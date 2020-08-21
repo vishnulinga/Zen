@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+ 
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<style>
+
+    .outerdiv{
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        margin-top: 15%;
+    }
+    .h1{
+        color:cadetblue;
+        text-align: center;
+    }
+    .button{
+        width:40%;
+        color:white;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+    }
+    .innerdiv{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+</style>
+
+</head>
+<body>
+<script>
+var outerdiv=document.createElement("div")
+outerdiv.setAttribute("class","outerdiv")
+var container=document.createElement("div")
+container.setAttribute("class","container-fluid")
+var h1=document.createElement("h1")
+h1.setAttribute("class","h1")
+h1.innerText="Quick Quiz"
+container.appendChild(h1)
+
+var div=document.createElement("div")
+div.setAttribute("class","innerdiv")
+var btn=document.createElement("a")
+btn.setAttribute("class","btn btn-primary button")
+btn.setAttribute("href","game.html")
+btn.innerText="Play"
+div.appendChild(btn)
+container.appendChild(div)
+
+var div=document.createElement("div")
+div.setAttribute("class","innerdiv")
+var btn=document.createElement("a")
+btn.setAttribute("class","btn btn-primary button")
+btn.setAttribute("href","highscores.html")
+btn.innerText="High Scores"
+div.appendChild(btn)
+container.appendChild(div)
+
+
+outerdiv.appendChild(container)
+document.body.append(outerdiv)
+console.log(outerdiv)
+
+</script>
+</body>

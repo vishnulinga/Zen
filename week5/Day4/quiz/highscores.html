@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<head>
+ 
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<style>
+
+    .outerdiv{
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        margin-top: 15%;
+    }
+    .h1{
+        color:cadetblue;
+        text-align: center;
+    }
+    .button{
+        
+        color:blue;
+        margin-left: auto;
+        margin-right: auto;
+        border: none;
+        margin-top: 10px;
+        background-color: white;
+        text-decoration: none;
+        
+        
+    }
+    .innerdiv{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    .input{
+        width:35%;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow:1px 1px 8px skyblue;
+        
+    }
+</style>
+
+</head>
+<body>
+<script>
+var outerdiv=document.createElement("div")
+outerdiv.setAttribute("class","outerdiv")
+var container=document.createElement("div")
+container.setAttribute("class","container-fluid")
+var h1=document.createElement("h1")
+h1.setAttribute("class","h1")
+h1.innerText="High Scores"
+container.appendChild(h1)
+
+var ul=document.createElement("div")
+ul.setAttribute("id","ul")
+ul.setAttribute("style","text-align:center;margin-left:auto;margin-right:auto;")
+generate();
+container.appendChild(ul)
+
+
+
+var div=document.createElement("div")
+div.setAttribute("class","innerdiv")
+var btn=document.createElement("a")
+btn.setAttribute("class","button")
+btn.setAttribute("id","gohome")
+btn.setAttribute("href","index.html")
+btn.innerText="Go Home"
+div.appendChild(btn)
+container.appendChild(div)
+
+
+outerdiv.appendChild(container)
+document.body.append(outerdiv)
+console.log(outerdiv)
+
+
+
+async function get()
+{
+    var response=await fetch("https://5f3ecbe913a9640016a691bf.mockapi.io/username")
+    let data=await response.json()
+    
+    console.log(data)
+    return data
+}
+async function generate()
+{var arr=await get()
+for(i=0;i<arr.length;i++)
+{
+    var li=document.createElement("div")
+    li.setAttribute("style","text-align:center;margin-left:auto;margin-right:auto;")
+    li.innerText="USER : "+arr[i].user+"-----SCORE : "+arr[i].score
+    document.getElementById("ul").appendChild(li)
+
+}
+
+
+}
+
+</script>
+</body>
