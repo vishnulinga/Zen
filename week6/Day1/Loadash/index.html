@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="loadash.js"></script>
+    <style>
+       
+
+            .mid {
+            justify-content: center !important;
+            display: grid !important;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contianer text-center mid">
+        
+       
+        
+            <span class="input-group-text" id="basic-addon1">Enter space separated numbers</span>
+            <input type="text" class="form-control" id="array">
+            <input type="button" onclick="submit()" value="submit">
+            <div id="display1"></div>
+            <div id="display2"></div>
+            <div id="display3"></div>
+            <div id="display4"></div>
+            <div id="display5"></div>
+        
+    
+    </div>
+    
+    <script>
+        function submit(){
+        let arr=document.getElementById("array").value.split(" ").map(x=>+x)
+        let str="sum of input elements: "+sum(arr)
+        document.getElementById("display1").innerText=str
+        
+        str="find number 2 in input elements? "+find(arr,2)
+        document.getElementById("display2").innerText=str
+       
+        str="filter negative numbers: "+filter(arr)
+        document.getElementById("display3").innerText=str
+        
+        str="reduce input : "+reduce(arr)
+        document.getElementById("display4").innerText=str
+        
+        let chunkarr=chunk(arr,2)
+        str=`chunk array of ${chunkarr} : check console`
+        document.getElementById("display5").innerText=str
+        
+        
+
+        }
+
+
+    </script>
+</body>
+
+</html>
