@@ -85,6 +85,7 @@ document.getElementById("videotag").load()
 function volumeup()
 {
     var vol=tv1.volumeup()
+    if(vol<=100){
     let volbar=document.createElement("progress")
     volbar.setAttribute("max","100")
     volbar.setAttribute("value",vol)
@@ -96,9 +97,12 @@ document.getElementById("volumebar").removeChild(volbar)
     },1000
     )
 }
+else alert("Volume too high")
+}
 function volumedown()
 {
     var vol=tv1.volumedown()
+    if(vol>=1){
     let volbar=document.createElement("progress")
     volbar.setAttribute("max","100")
     volbar.setAttribute("value",vol)
@@ -109,6 +113,8 @@ function volumedown()
 document.getElementById("volumebar").removeChild(volbar)
     },1000
     )
+}
+else alert("Volume too low")
 }
 
 function reset(){
