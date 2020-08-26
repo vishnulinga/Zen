@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<head>
+<head>
+    <script src="TV.js"></script>
+<style>
+    .filmbackground {
+   z-index: -1;
+   position: relative;
+   top: 0;
+   left: 0;
+   width: 100%;
+}
+.video_layer
+{
+margin-left: 526px;
+margin-top: -640px;
+height:430px;
+width:770px;
+background-color: black;
+position: absolute;
+z-index: 1;
+}
+video
+{
+
+height:100%;
+width:100%;
+}
+
+
+</style>
+</head>
+<body>
+  
+ <div id="imagetag" >    
+   <img src="tv_remote.PNG" id="ledremote" usemap="#remotemap" >
+   <map name="remotemap">
+    <area  alt="volumeup" title="volumeup"  coords="218,184,246,208"  shape="rect" onclick="volumeup()" style="cursor: pointer;">
+    <area  alt="volumedown" title="volumedown"  coords="218,220,246,240" shape="rect" onclick="volumedown()" style="cursor: pointer;">
+    <area  alt="channelup" title="channelup" coords="281,184,310,208"  shape="rect" onclick="channelup()" style="cursor: pointer;">
+    <area alt="channeldown" title="channeldown"  coords="282,217,310,244" shape="rect" onclick="channeldown()" style="cursor: pointer;">
+    <area alt="reset" title="reset"  coords="284,272,311,297"  shape="rect" onclick="reset()" style="cursor: pointer;">
+    <area alt="status" title="status"  coords="284,340,311,363"   shape="rect" onclick="displaystatus()" style="cursor: pointer;">  
+</map>
+</div>
+<div class="video_layer">
+    <video   id="videotag" autoplay="autoplay">
+        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" id="videolink" type="video/mp4">
+     </video>
+</div>
+<div style="margin-left:650px;margin-top:-250px;z-index: 2;position: absolute;" id="volumebar">
+    
+</div>
+
+<div style="margin-left: 45%;margin-top:-90px;z-index: 2;position: absolute;">
+<span style="background-color: rgb(212, 211, 211);padding: 10px;border-radius: 5px;"><a href="index.html" style="text-decoration: none;color:black;">Portable</a></span>
+<span style="background-color: rgb(212, 211, 211);padding: 10px;border-radius: 5px;"><a href="LED.html"  style="text-decoration: none;color:black;">LED</a></span>
+<span style="background-color: rgb(212, 211, 211);padding: 10px;border-radius: 5px;"><a href="Plasma.html"  style="text-decoration: none;color:black;">Plasma</a></span>
+</div>
+
+<script>
+
+var tv1=new LEDTV("Samsung")
+document.getElementById("videolink").setAttribute("src","http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4")
+console.log(tv1)
+
+
+    
+function channelup()
+{
+let ch=tv1.channelup()
+document.getElementById("videolink").setAttribute("src",ch)
+document.getElementById("videotag").load()
+
+
+}
+
+function channeldown()
+{
+let ch=tv1.channeldown()
+document.getElementById("videolink").setAttribute("src",ch)
+document.getElementById("videotag").load()
+}
+
+function volumeup()
+{
+    var vol=tv1.volumeup()
+    let volbar=document.createElement("progress")
+    volbar.setAttribute("max","100")
+    volbar.setAttribute("value",vol)
+    volbar.setAttribute("style","width:500px;height:30px;background-color:blue;")
+    volbar.innerText=vol
+    document.getElementById("volumebar").appendChild(volbar)
+    setTimeout(()=>{
+document.getElementById("volumebar").removeChild(volbar)
+    },1000
+    )
+}
+function volumedown()
+{
+    var vol=tv1.volumedown()
+    let volbar=document.createElement("progress")
+    volbar.setAttribute("max","100")
+    volbar.setAttribute("value",vol)
+    volbar.setAttribute("style","width:500px;height:30px;background-color:blue;")
+    volbar.innerText=vol
+    document.getElementById("volumebar").appendChild(volbar)
+    setTimeout(()=>{
+document.getElementById("volumebar").removeChild(volbar)
+    },1000
+    )
+}
+
+function reset(){
+    document.getElementById("videolink").setAttribute("src","http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4")
+    document.getElementById("videotag").load()
+}
+
+function displaystatus(){
+let status=tv1.status()
+alert(status)
+}
+</script>
+  
+</body>
+</html>
