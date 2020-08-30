@@ -52,7 +52,7 @@ document.getElementById("top").addEventListener("click", function (e) { return _
                     method: "GET",
                     headers: {
                         "x-rapidapi-host": "shazam.p.rapidapi.com",
-                        "x-rapidapi-key": "eab956df1cmshfa8f3a61aed24f8p19dd6cjsn66351b737de1"
+                        "x-rapidapi-key": "26108c1e47msha4757e4746787e5p1481d7jsnc5b488cf24c9"
                     }
                 })];
             case 1:
@@ -82,7 +82,7 @@ document.getElementById("recommend").addEventListener("click", function (e) { re
                     "method": "GET",
                     "headers": {
                         "x-rapidapi-host": "shazam.p.rapidapi.com",
-                        "x-rapidapi-key": "eab956df1cmshfa8f3a61aed24f8p19dd6cjsn66351b737de1"
+                        "x-rapidapi-key": "26108c1e47msha4757e4746787e5p1481d7jsnc5b488cf24c9"
                     }
                 })];
             case 1:
