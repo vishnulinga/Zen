@@ -1,149 +1,86 @@
-class pet {
-  name: string;
-  type: string;
-  color: string;
-  age: number;
-  breed: string;
-  history: string;
-  Location: string;
-
-  constructor(parameters) { 
-    this.name = parameters.name;
-    this.type = parameters.type;
-    this.color = parameters.color;
-    this.age = parameters.age;
-    this.breed = parameters.breed;
-    this.history = parameters.history;
-    this.Location = parameters.Location;
-}
-}
-
-class request {
-  query: object[][] = [];
-  pets:pet[] =[];
-
-  constructor(){ }
-
-  storeEnquiry(enquery : object[]) { 
-      this.query.push(enquery);
-  }
-
-  enqueryStatus(){
-      let result = []
-      for(let i = 0; i < 5 && i < this.query.length; i++){
-          let search = this.petAvailable(this.query[i]);
-          result.push(search);
-      }
-      return result;
-  }
-
-  petAvailable(queryArr : object[]) { 
-      let res = {pets:[], count:0};
-
-      for(let i in queryArr){
-          let query = queryArr[i];
-          this.pets.forEach((pet)=>{
-              let isAvailable = Object.keys(query).every(
-                  (constrains) => query[constrains] == pet[constrains]  || query[constrains] == '');
-              if(isAvailable){
-                  let petData = {name : pet.name}
-                  res.pets.push(petData);
-                  res.count++;
-              }
-          });
-      }
-      return res
-  }
-
+type Type = "dog" | "cat" | "fish";
+class Pet {
+    name: string;
+    type: Type;
+    color: string;
+    age: number;
+    breed: string;
+    history: string;
+    location: string;
+  
+    constructor(name,type,color,age,breed,history,location) { 
+      this.name = name;
+      this.type = type;
+      this.color = color;
+      this.age = age;
+      this.breed = breed;
+      this.history = history;
+      this.location = location;
+    }
 }
 
+class Availability{
+    pets:Pet[];
 
-class availability extends request{
-  pets: pet[] = [];
+    constructor(pets=[]){
+        this.pets = pets;
+    }
 
-  constructor(){ super(); }
+    insertPet(pet:Pet){
+        this.pets.push(pet)
+    }
 
-  insert(newPet: pet) {
-      this.pets.push(newPet);
-  }
+    availablePets(){
+        return this.pets
+    }
 
-  removePet(name: string) {
-      let elementIndex = this.pets.findIndex(element => element.name  == name);
-      this.pets.splice(elementIndex, 1);
-  }
+    removePet(name:string){
+        for(let i=0;i<this.pets.length;i++){
+            if(this.pets[i].name==name){
+                this.pets.splice(i,1)
+            }
+        }
+    }
 
-  count() { 
-      let pets = this.pets.reduce((acc, element) => {
-          acc[element.type] ? acc[element.type]++ : acc[element.type] = 1
-          return acc;
-      },{});
-      return pets;
-  }
+    count(){
+        let dog=0,cat=0,fish=0;
+        for(let i=0;i<this.pets.length;i++){
+            if(this.pets[i].type == "dog"){
+                dog++;  
+            }else if(this.pets[i].type == "cat"){
+                cat++;
+            }else{
+                fish++
+            }
+        }
+        return {Dog:dog, Cat:cat, fish:fish}
+    }
+}
+
+class requestPet extends Availability{
+    queries:object[][];
+    constructor(){
+        super();
+    };
+
+    storeEnquires(query:object[]){
+        this.queries.push(query);
+    }
 
 }
 
-
-let petShop = new availability();
-
-let pet1 = new pet({
-  name: 'shiro',
-  type: "dog",
-  color: 'white',
-  age : 2,
-  breed: "dog",
-  history: "New Born",
-  Location: "chennai",
-});
-
-petShop.insert(pet1);
-
-let pet2 = new pet({
-  name: 'hima',
-  type: "dog",
-  color: 'brown',
-  age : 4,
-  breed: "dog",
-  history: "Owned by rajesh",
-  Location: "chennai",
-});
-
-petShop.insert(pet2);
-
-let pet3 = new pet({
-  name: 'momo',
-  type: "cat",
-  color: 'white',
-  age : 2,
-  breed: "cat",
-  history: "New Born",
-  Location: "chennai",
-});
-
-petShop.insert(pet3);
-
-let pet4 = new pet({
-  name: 'nemo',
-  type: "fish",
-  color: 'golden orange',
-  age : 2,
-  breed: "gold fish",
-  history: "owned by gupta",
-  Location: "chennai",
-});
-
-petShop.insert(pet4);
-
-let pet5 = new pet({
-  name: 'meow',
-  type: "cat",
-  color: 'black',
-  age : 2,
-  breed: "cat",
-  history: "New Born",
-  Location: "chennai",
-});
-
-petShop.insert(pet5);
-
-
-petShop.storeEnquiry([{color: 'white', type : 'dog'}]);
+let myPet1 = new Pet("tommy","dog","brown",4,"labrador","adopted","Mumbai");
+let myPet2 = new Pet("hero","dog","black",5,"indian","adopted","KGF");
+let myPet3 = new Pet("pussy","cat","black",5,"indian","adopted","KGF");
+let myPet4 = new Pet("blacky","cat","black",5,"indian","adopted","KGF");
+let myPet5 = new Pet("golden","fish","blue",5,"indian","adopted","KGF");
+let myPet6 = new Pet("nimmo","fish","golden",5,"indian","adopted","KGF");
+let petshop = new Availability()
+petshop.insertPet(myPet1)
+petshop.insertPet(myPet2)
+petshop.insertPet(myPet3)
+petshop.insertPet(myPet4)
+petshop.insertPet(myPet5)
+petshop.insertPet(myPet6)
+console.log(petshop.availablePets())
+console.log(petshop.count())
