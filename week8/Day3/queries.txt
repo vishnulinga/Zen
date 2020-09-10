@@ -1,0 +1,191 @@
+//creating a database
+
+use zenclass
+
+//creating collections and inserting documents into it
+
+db.students.insert({name:"izekial",dob:"19/11/1997",email:"def@abc.com",mobile:9876543210,occupation:"student"})
+db.students.insert({name:"chris",dob:"19/11/1997",email:"def@abc.com",mobile:9876543210,occupation:"student"})
+db.students.insert({name:"ram",dob:"19/11/1997",email:"abc@abc.com",mobile:9876543210,occupation:"student"})
+
+db.mentors.insert({mentorName:"banu",mentorEmail:"banu@guvi.com",studentsCountForMentors:5})
+db.mentors.insert({mentorName:"venkat",mentorEmail:"venkat@guvi.com",studentsCountForMentors:5})
+db.mentors.insert({mentorName:"RV",mentorEmail:"RV@guvi.com",studentsCountForMentors:5})
+db.mentors.update({},{$set:{students:[{ "_id" : ObjectId("5f5a6a2014dbbc1d109343be") },{ "_id" : ObjectId("5f5a6b0514dbbc1d109343bf") }]}},{multi:true})
+
+db.courses.inser({courseName:"Zenclass",courseCategory:"weekday",courseDuration:3,courseAuthorName:"arun"})
+db.courses.update({},{$set:{students:[{ "_id" : ObjectId("5f5a6a2014dbbc1d109343be") },{ "_id" : ObjectId("5f5a6b0514dbbc1d109343bf") }]}},{multi:true})
+
+db.attendance.insert({attendanceStatus:true,attendanceDate:"5 sep 2020"})
+db.attendance.update({},{$set:{students:[{ "_id" : ObjectId("5f5a6a2014dbbc1d109343be") },{ "_id" : ObjectId("5f5a6b0514dbbc1d109343bf") }]}},{multi:true})
+
+db.dailyTasks.insert({taskName:"db",taskType:"assignment",taskgivenDate:"5 sep 2020",taskDeadline:"6 sep 2020",taskURL:"https://task.com"})
+db.dailyTasks.update({},{$set:{students:[{ "_id" : ObjectId("5f5a6a2014dbbc1d109343be") },{ "_id" : ObjectId("5f5a6b0514dbbc1d109343bf") }]}},{multi:true})
+
+db.companyDrives.insert({companyName:"Amazon",companyDriveDate:"10 sep 2020",companyJD:true,companyType:"product"})
+db.companyDrives.update({},{$set:{students:[{ "_id" : ObjectId("5f5a6a2014dbbc1d109343be") },{ "_id" : ObjectId("5f5a6b0514dbbc1d109343bf") }]}},{multi:true})
+
+db.codekata.insert({codekataCategoryName:"arrays",codekataQuesID:2,codekataQuesStatus:"completed"})
+db.codekata.update({},{$set:{students:[{ "_id" : ObjectId("5f5a6a2014dbbc1d109343be") },{ "_id" : ObjectId("5f5a6b0514dbbc1d109343bf") }]}},{multi:true})
+
+//output//**********************************************
+
+> show collections
+attendance
+codekata
+companyDrives
+courses
+dailyTasks
+mentors
+students
+> db.attendance.find().pretty()
+{
+        "_id" : ObjectId("5f5a710d14dbbc1d109343c5"),
+        "attendanceStatus" : true,
+        "attendanceDate" : "5 sep 2020",
+        "students" : [
+                {
+                        "_id" : ObjectId("5f5a6a2014dbbc1d109343be")
+                },
+                {
+                        "_id" : ObjectId("5f5a6b0514dbbc1d109343bf")
+                }
+        ]
+}
+> db.codekata.find().petty()
+uncaught exception: TypeError: db.codekata.find(...).petty is not a function :
+@(shell):1:1
+> db.codekata.find().pretty()
+{
+        "_id" : ObjectId("5f5a726f14dbbc1d109343c8"),
+        "codekataCategoryName" : "arrays",
+        "codekataQuesID" : 2,
+        "codekataQuesStatus" : "completed",
+        "students" : [
+                {
+                        "_id" : ObjectId("5f5a6a2014dbbc1d109343be")
+                },
+                {
+                        "_id" : ObjectId("5f5a6b0514dbbc1d109343bf")
+                }
+        ]
+}
+> db.companyDrives.find().pretty()
+{
+        "_id" : ObjectId("5f5a720f14dbbc1d109343c7"),
+        "companyName" : "Amazon",
+        "companyDriveDate" : "10 sep 2020",
+        "companyJD" : true,
+        "companyType" : "product",
+        "students" : [
+                {
+                        "_id" : ObjectId("5f5a6a2014dbbc1d109343be")
+                },
+                {
+                        "_id" : ObjectId("5f5a6b0514dbbc1d109343bf")
+                }
+        ]
+}
+> db.courses.find().pretty()
+{
+        "_id" : ObjectId("5f5a70a314dbbc1d109343c4"),
+        "courseName" : "Zenclass",
+        "courseCategory" : "weekday",
+        "courseDuration" : 3,
+        "courseAuthorName" : "arun",
+        "students" : [
+                {
+                        "_id" : ObjectId("5f5a6a2014dbbc1d109343be")
+                },
+                {
+                        "_id" : ObjectId("5f5a6b0514dbbc1d109343bf")
+                }
+        ]
+}
+> db.dailyTasks.find().pretty()
+{
+        "_id" : ObjectId("5f5a719814dbbc1d109343c6"),
+        "taskName" : "db",
+        "taskType" : "assignment",
+        "taskgivenDate" : "5 sep 2020",
+        "taskDeadline" : "6 sep 2020",
+        "taskURL" : "https://task.com",
+        "students" : [
+                {
+                        "_id" : ObjectId("5f5a6a2014dbbc1d109343be")
+                },
+                {
+                        "_id" : ObjectId("5f5a6b0514dbbc1d109343bf")
+                }
+        ]
+}
+> db.mentors.find().pretty()
+{
+        "_id" : ObjectId("5f5a6b8b14dbbc1d109343c1"),
+        "mentorName" : "banu",
+        "mentorEmail" : "banu@guvi.com",
+        "studentsCountForMentors" : 5,
+        "students" : [
+                {
+                        "_id" : ObjectId("5f5a6a2014dbbc1d109343be")
+                },
+                {
+                        "_id" : ObjectId("5f5a6b0514dbbc1d109343bf")
+                }
+        ]
+}
+{
+        "_id" : ObjectId("5f5a6ba014dbbc1d109343c2"),
+        "mentorName" : "venkat",
+        "mentorEmail" : "venkat@guvi.com",
+        "studentsCountForMentors" : 5,
+        "students" : [
+                {
+                        "_id" : ObjectId("5f5a6a2014dbbc1d109343be")
+                },
+                {
+                        "_id" : ObjectId("5f5a6b0514dbbc1d109343bf")
+                }
+        ]
+}
+{
+        "_id" : ObjectId("5f5a6bb714dbbc1d109343c3"),
+        "mentorName" : "RV",
+        "mentorEmail" : "RV@guvi.com",
+        "studentsCountForMentors" : 5,
+        "students" : [
+                {
+                        "_id" : ObjectId("5f5a6a2014dbbc1d109343be")
+                },
+                {
+                        "_id" : ObjectId("5f5a6b0514dbbc1d109343bf")
+                }
+        ]
+}
+> db.students.find().pretty()
+{
+        "_id" : ObjectId("5f5a6a2014dbbc1d109343be"),
+        "name" : "ram",
+        "dob" : "19/11/1997",
+        "email" : "abc@abc.com",
+        "mobile" : 9876543210,
+        "occupation" : "student"
+}
+{
+        "_id" : ObjectId("5f5a6b0514dbbc1d109343bf"),
+        "name" : "izekial",
+        "dob" : "19/11/1997",
+        "email" : "def@abc.com",
+        "mobile" : 9876543210,
+        "occupation" : "student"
+}
+{
+        "_id" : ObjectId("5f5a6b1514dbbc1d109343c0"),
+        "name" : "chris",
+        "dob" : "19/11/1997",
+        "email" : "def@abc.com",
+        "mobile" : 9876543210,
+        "occupation" : "student"
+}
+>
+
