@@ -1,0 +1,46 @@
+3. db.pets.find().pretty()
+
+#################################################################
+
+{
+	"_id" : ObjectId("5f5ee617b354802fb0ac61a6"),
+	"id" : "1",
+	"name" : "Tom",
+	"type" : "Dog",
+	"breed" : "Rotwiller",
+	"age" : "3 Months",
+	"previousowner" : "rajiv",
+	"price" : 1500
+}
+{
+	"_id" : ObjectId("5f5ee617b354802fb0ac61a7"),
+	"id" : "2",
+	"name" : "spike",
+	"type" : "Dog",
+	"breed" : "pomeranian",
+	"age" : "10 Months",
+	"previousowner" : "brock",
+	"price" : 2500
+}
+{
+	"_id" : ObjectId("5f5ee617b354802fb0ac61a8"),
+	"id" : "3",
+	"name" : "dash",
+	"type" : "Dog",
+	"breed" : "pug",
+	"age" : "10 Months",
+	"previousowner" : "rakul",
+	"price" : 7500
+}
+{
+	"_id" : ObjectId("5f5ee617b354802fb0ac61a9"),
+	"id" : "4",
+	"name" : "whisky",
+	"type" : "Cat",
+	"breed" : "semi punch",
+	"age" : "5 Months",
+	"previousowner" : "justin",
+	"price" : 1500
+}
+
+

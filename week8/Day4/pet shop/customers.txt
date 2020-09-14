@@ -1,0 +1,43 @@
+1. db.customers.find().pretty()
+
+#######################################################
+
+{
+	"_id" : ObjectId("5f5ee187b354802fb0ac61a0"),
+	"customerid" : 1,
+	"customername" : "rahul",
+	"email" : "rahul@guvi.in",
+	"phone" : 1234567890,
+	"address" : {
+		"flatno" : 93,
+		"streetno" : 13,
+		"city" : "ongole",
+		"pincode" : 221301
+	}
+}
+{
+	"_id" : ObjectId("5f5ee187b354802fb0ac61a1"),
+	"customerid" : 2,
+	"customername" : "rajiv",
+	"email" : "rajiv@guvi.in",
+	"phone" : 1234567890,
+	"address" : {
+		"flatno" : 13,
+		"streetno" : 13,
+		"city" : "guntur",
+		"pincode" : 212313
+	}
+}
+{
+	"_id" : ObjectId("5f5ee187b354802fb0ac61a2"),
+	"customerid" : 3,
+	"customername" : "ramesh",
+	"email" : "ramesh@guvi.in",
+	"phone" : 1234567890,
+	"address" : {
+		"flatno" : 31,
+		"streetno" : 31,
+		"city" : "vijayawada",
+		"pincode" : 222222
+	}
+}
