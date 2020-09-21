@@ -2,7 +2,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
-<body style="background-color:cornsilk;">
+<body style="background-image: url(https://www.gonzaga.edu/-/media/Website/Images/Body-Content/Giving/Zags-at-Home/Zoom-BGs/spires-dark-blue.ashx?la=en&hash=EDD0920EFC7D8A967AFA14E2789AC1549F0F889E);">
 <div class="container">
 <div style="margin-left: 30%;margin-right: 30%;margin-top: 100px;">
     <div class="input-group mb-3">
@@ -19,14 +19,14 @@
       </div>
       <button type="button" class="btn btn-success" onclick="login()">Login</button>
       <button type="button" class="btn btn-primary" onclick="register()">Register</button>
-      <div><a href="reset.html" style='color: blue;'>Forgot Password?</a></div>
+      <div><a href="verify.html" style='color: blue;'>Forgot Password?</a></div>
 </div>
 </div>
 
 
 <script>
     async function login(){
-      try{  let res=await fetch("http://localhost:3000/users/login",{
+      try{  let res=await fetch("https://longshorturl.herokuapp.com/users/login",{
             method:"POST",
             body:JSON.stringify({
                 email:document.getElementById("email").value,
@@ -53,7 +53,7 @@
     }
     
     async function register(){
-        let res=await fetch("http://localhost:3000/users/register",{
+        let res=await fetch("https://longshorturl.herokuapp.com/users/register",{
             method:"POST",
             body:JSON.stringify({
                 email:document.getElementById("email").value,
